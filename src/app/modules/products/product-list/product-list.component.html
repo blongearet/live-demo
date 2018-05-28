@@ -1,6 +1,23 @@
-<mat-list>
-  <mat-list-item *ngFor="let product of products">
-      #{{ product.id }} - {{ product.name }} {{ product.emoji }} 
-      <button mat-button [routerLink]="['/products', 'detail']">Click me!</button>
-  </mat-list-item>
-</mat-list>
+<mat-toolbar color="primary">
+  Product list!
+</mat-toolbar>
+<div *ngFor="let product of displayedProduct"
+     class="d-flex align-items-center">
+  <div>
+    #{{ product.id }} - {{ product.name }} {{ product.emoji }}<br />
+    {{ product.date }}
+  </div>
+  <div class="flex-grow-1 d-flex justify-content-end">
+    <button mat-icon-button
+            [routerLink]="['/products', 'detail']">
+      <mat-icon>detail</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>cart</mat-icon>
+    </button>
+  </div>
+</div>
+<mat-paginator [pageSize]="pageSize"
+               [length]="products.length"
+               [pageIndex]="currentPage"
+               (page)="buildDisplayedProduct($event)"></mat-paginator>

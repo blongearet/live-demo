@@ -8,7 +8,8 @@ import { ProductListComponent } from './modules/products/product-list/product-li
 
 const routes: Routes = [
   {
-    path: 'welcome',
+    path: '',
+    pathMatch: 'full',
     component: WelcomeComponent
   },
   {
@@ -17,17 +18,23 @@ const routes: Routes = [
     children: [
       {
         path: '',
+        pathMatch: 'full',
         component: ProductListComponent
       },
       {
-        path: 'edit',
-        component: ProductEditComponent
+        path: ':id',
+        component: ProductDetailComponent
       },
       {
-        path: 'detail',
-        component: ProductDetailComponent
+        path: ':id/edit',
+        component: ProductEditComponent
       }
     ]
+  },
+  {
+    path: '**',
+    pathMatch: 'full',
+    redirectTo: ''
   }
 ];
 

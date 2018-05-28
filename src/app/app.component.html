@@ -1,9 +1,36 @@
-<mat-toolbar color="primary" class="example-toolbar">
-  <h1 class="example-app-name"> Tartoprune</h1>
-</mat-toolbar>
-
 <mat-sidenav-container>
+
+  <mat-sidenav #snav>
+    <a class="brand-lookup">Menu</a>
+    <a class="sidebar-link"
+       routerLink="/"
+       (click)="snav.close()">
+      <mat-icon>home</mat-icon> Accueil
+    </a>
+    <a class="sidebar-link d-flex"
+       routerLink="/products"
+       (click)="snav.close()">
+      <mat-icon>storage</mat-icon> Products
+    </a>
+  </mat-sidenav>
+
   <mat-sidenav-content>
+
+    <mat-toolbar class="mat-elevation-z6"
+                 color="primary">
+      <button mat-icon-button
+              (click)="snav.toggle()"
+              class="sidenav-toggle">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <h1 routerLink="/">Tartoprune 😻</h1>
+      <div class="flex-spacer"></div>
+      <button mat-icon-button>
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-toolbar>
+
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
