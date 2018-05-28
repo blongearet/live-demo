@@ -4,8 +4,8 @@
 <div *ngFor="let product of displayedProduct"
      class="d-flex align-items-center">
   <div>
-    #{{ product.id }} - {{ product.name }} {{ product.emoji }}<br />
-    {{ product.date }}
+    #{{ product.id }} - {{ product.name | uppercase | reverse }} {{ product.emoji }}<br />
+    {{ product.date | moment:'DD/MM/YYYY' }}
   </div>
   <div class="flex-grow-1 d-flex justify-content-end">
     <button mat-icon-button

@@ -17,6 +17,8 @@ import {ProductsComponent} from './modules/products/products.component'
 import {ProductListComponent} from './modules/products/product-list/product-list.component'
 import {ProductDetailComponent} from './modules/products/product-detail/product-detail.component'
 import {ProductEditComponent} from './modules/products/product-edit/product-edit.component'
+import {ReversePipe} from './core/pipes/reverse.pipe';
+import {MomentPipe} from './core/pipes/moment.pipe'
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import {ProductEditComponent} from './modules/products/product-edit/product-edit
     ProductsComponent,
     ProductListComponent,
     ProductDetailComponent,
-    ProductEditComponent
+    ProductEditComponent,
+    ReversePipe,
+    MomentPipe
   ],
   imports: [
     BrowserModule,
