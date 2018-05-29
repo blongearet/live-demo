@@ -11,26 +11,26 @@ import {MatListModule} from '@angular/material/list'
 import {MatSidenavModule} from '@angular/material/sidenav'
 import {MatCardModule} from '@angular/material/card'
 import {MatPaginatorModule} from '@angular/material/paginator'
-import {HeaderComponent} from './modules/header/header.component'
 import {WelcomeComponent} from './modules/welcome/welcome.component'
 import {ProductsComponent} from './modules/products/products.component'
 import {ProductListComponent} from './modules/products/product-list/product-list.component'
 import {ProductDetailComponent} from './modules/products/product-detail/product-detail.component'
 import {ProductEditComponent} from './modules/products/product-edit/product-edit.component'
 import {ReversePipe} from './core/pipes/reverse.pipe';
-import {MomentPipe} from './core/pipes/moment.pipe'
+import {MomentPipe} from './core/pipes/moment.pipe';
+import { StarRatingComponent } from './core/components/star-rating/star-rating.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     WelcomeComponent,
     ProductsComponent,
     ProductListComponent,
     ProductDetailComponent,
     ProductEditComponent,
     ReversePipe,
-    MomentPipe
+    MomentPipe,
+    StarRatingComponent
   ],
   imports: [
     BrowserModule,

@@ -5,8 +5,17 @@
   <div *ngFor="let product of displayedProduct"
        class="d-flex w-100">
     <div>
-      #{{ product.id }} - {{ product.productName | titlecase }} {{ product.emoji }}<br />
-      {{ product.starRating }} {{ product.price | currency }}
+      <div>
+        #{{ product.id }} - {{ product.productName | titlecase }} {{ product.emoji }}
+      </div>
+      <div>
+        {{ product.price | currency }} - <i>{{ product.productCode }}</i>
+      </div>
+      <app-star-rating [rating]="product.starRating"
+                       [type]="StarRatingComponentType.FAVORITE"
+                       [color]="'#3f51b5'"
+                       [detail]="true"
+                       (rate)="onRate(product, $event)"></app-star-rating>
     </div>
     <div class="flex-grow-1 d-flex justify-content-end">
       <button mat-icon-button

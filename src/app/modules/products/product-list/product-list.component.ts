@@ -1,5 +1,6 @@
 import {Component} from '@angular/core'
 import {PageEvent} from '@angular/material'
+import {StarRatingComponentType} from "../../../core/components/star-rating/star-rating.component";
 
 export interface IProduct {
   id: number;
@@ -20,6 +21,7 @@ export interface IProduct {
 })
 export class ProductListComponent {
 
+  public StarRatingComponentType: typeof StarRatingComponentType = StarRatingComponentType
   public pageSize: number = 7
   public currentPage: number = 0
 
@@ -29,7 +31,7 @@ export class ProductListComponent {
     {
       id: 1,
       productName: 'Unicorn',
-      productCode: '',
+      productCode: 'AEJFYBNF',
       price: 2,
       description: '',
       starRating: 2,
@@ -40,10 +42,10 @@ export class ProductListComponent {
     {
       id: 2,
       productName: 'Rocket',
-      productCode: '',
+      productCode: 'IUHNFFJ',
       price: 2,
       description: '',
-      starRating: 2,
+      starRating: 5,
       imageUrl: 'https://m.popkey.co/b0947f/RXKAk.gif',
       emoji: '🦄',
       releaseDate: new Date()
@@ -51,10 +53,10 @@ export class ProductListComponent {
     {
       id: 3,
       productName: 'Happuy',
-      productCode: '',
+      productCode: 'KKEHCGFV',
       price: 2,
       description: '',
-      starRating: 2,
+      starRating: 1,
       imageUrl: 'https://m.popkey.co/527299/MwREL.gif',
       emoji: '🦄',
       releaseDate: new Date()
@@ -73,4 +75,7 @@ export class ProductListComponent {
     this.displayedProduct = this.products.slice(start, end)
   }
 
+  public onRate(product: IProduct, rate: number): void {
+    product.starRating = rate
+  }
 }

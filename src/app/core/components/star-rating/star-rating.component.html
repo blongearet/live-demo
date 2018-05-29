@@ -1,0 +1,10 @@
+<div *ngFor="let currentRate of this.availableRatings"
+     class="d-flex">
+  <mat-icon [ngStyle]="iconStyles" (click)="onClick(currentRate + 1)">
+    {{ rating > currentRate ? getType() : getTypeBorder() }}
+  </mat-icon>
+</div>
+<div *ngIf="detail"
+     class="pl-2">
+  <i>{{ rating }}/{{ maxRate }}</i>
+</div>
