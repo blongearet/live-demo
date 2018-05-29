@@ -8,7 +8,7 @@ import {PageEvent} from '@angular/material'
 })
 export class ProductListComponent {
 
-  public pageSize: number = 5
+  public pageSize: number = 7
   public currentPage: number = 0
 
   public displayedProduct: any[] = []
@@ -58,6 +58,18 @@ export class ProductListComponent {
     },
     {
       id: 8,
+      name: 'Rocket',
+      emoji: '🚀',
+      date: new Date()
+    },
+    {
+      id: 9,
+      name: 'Rocket',
+      emoji: '🚀',
+      date: new Date()
+    },
+    {
+      id: 10,
       name: 'Rocket',
       emoji: '🚀',
       date: new Date()

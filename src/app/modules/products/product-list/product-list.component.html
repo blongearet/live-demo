@@ -1,21 +1,24 @@
 <mat-toolbar color="primary">
   Product list!
 </mat-toolbar>
-<div *ngFor="let product of displayedProduct"
-     class="d-flex align-items-center">
-  <div>
-    #{{ product.id }} - {{ product.name | uppercase | reverse }} {{ product.emoji }}<br />
-    {{ product.date | moment:'DD/MM/YYYY' }}
+<div class="flex-grow-1 d-flex flex-column align-items-center justify-content-around pl-3 pr-3">
+  <div *ngFor="let product of displayedProduct"
+       class="d-flex w-100">
+    <div>
+      #{{ product.id }} - {{ product.name | uppercase | reverse }} {{ product.emoji }}<br />
+      {{ product.date | moment:'DD/MM/YYYY' }}
+    </div>
+    <div class="flex-grow-1 d-flex justify-content-end">
+      <button mat-icon-button
+              [routerLink]="['/products', 'detail']">
+        <mat-icon>info</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>add_shopping_cart</mat-icon>
+      </button>
+    </div>
   </div>
-  <div class="flex-grow-1 d-flex justify-content-end">
-    <button mat-icon-button
-            [routerLink]="['/products', 'detail']">
-      <mat-icon>detail</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>cart</mat-icon>
-    </button>
-  </div>
+
 </div>
 <mat-paginator [pageSize]="pageSize"
                [length]="products.length"
