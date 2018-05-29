@@ -5,6 +5,7 @@ import {WelcomeComponent} from './modules/welcome/welcome.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductListComponent } from './modules/products/product-list/product-list.component';
+import {ToolsComponent} from "./core/tools/tools.component";
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
         component: ProductEditComponent
       }
     ]
+  },
+  {
+    path: 'tools',
+    component: ToolsComponent
   },
   {
     path: '**',
