@@ -30,6 +30,6 @@
 
 </div>
 <mat-paginator [pageSize]="pageSize"
-               [length]="products.length"
+               [length]="productService.getProducts().length"
                [pageIndex]="currentPage"
                (page)="buildDisplayedProduct($event)"></mat-paginator>

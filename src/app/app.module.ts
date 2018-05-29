@@ -23,6 +23,7 @@ import {MomentPipe} from './core/pipes/moment.pipe';
 import {StarRatingComponent} from './core/components/star-rating/star-rating.component';
 import {ToolsComponent} from './core/tools/tools.component'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+import {ProductService} from './core/models/product/product.service'
 
 @NgModule({
   declarations: [
@@ -53,7 +54,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'
     MatPaginatorModule,
     MatSidenavModule
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
