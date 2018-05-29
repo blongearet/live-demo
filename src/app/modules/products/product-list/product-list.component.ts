@@ -1,6 +1,18 @@
 import {Component} from '@angular/core'
 import {PageEvent} from '@angular/material'
 
+export interface IProduct {
+  id: number;
+  productName: string;
+  productCode: string;
+  releaseDate: Date;
+  price: number;
+  description: string;
+  starRating: number;
+  imageUrl: string;
+  emoji: string;
+}
+
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -11,68 +23,41 @@ export class ProductListComponent {
   public pageSize: number = 7
   public currentPage: number = 0
 
-  public displayedProduct: any[] = []
+  public displayedProduct: IProduct[] = []
 
-  public products: any[] = [
+  public products: IProduct[] = [
     {
       id: 1,
-      name: 'Unicorn',
+      productName: 'Unicorn',
+      productCode: '',
+      price: 2,
+      description: '',
+      starRating: 2,
+      imageUrl: 'https://m.popkey.co/e229ad/xEZQM.gif',
       emoji: '🦄',
-      date: new Date()
+      releaseDate: new Date()
     },
     {
       id: 2,
-      name: 'Boom',
-      emoji: '💥',
-      date: new Date()
+      productName: 'Rocket',
+      productCode: '',
+      price: 2,
+      description: '',
+      starRating: 2,
+      imageUrl: 'https://m.popkey.co/b0947f/RXKAk.gif',
+      emoji: '🦄',
+      releaseDate: new Date()
     },
     {
       id: 3,
-      name: 'Rocket',
-      emoji: '🚀',
-      date: new Date()
-    },
-    {
-      id: 4,
-      name: 'Rocket',
-      emoji: '🚀',
-      date: new Date()
-    },
-    {
-      id: 5,
-      name: 'Rocket',
-      emoji: '🚀',
-      date: new Date()
-    },
-    {
-      id: 6,
-      name: 'Rocket',
-      emoji: '🚀',
-      date: new Date()
-    },
-    {
-      id: 7,
-      name: 'Rocket',
-      emoji: '🚀',
-      date: new Date()
-    },
-    {
-      id: 8,
-      name: 'Rocket',
-      emoji: '🚀',
-      date: new Date()
-    },
-    {
-      id: 9,
-      name: 'Rocket',
-      emoji: '🚀',
-      date: new Date()
-    },
-    {
-      id: 10,
-      name: 'Rocket',
-      emoji: '🚀',
-      date: new Date()
+      productName: 'Happuy',
+      productCode: '',
+      price: 2,
+      description: '',
+      starRating: 2,
+      imageUrl: 'https://m.popkey.co/527299/MwREL.gif',
+      emoji: '🦄',
+      releaseDate: new Date()
     }
   ]
 
