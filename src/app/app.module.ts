@@ -24,6 +24,7 @@ import {StarRatingComponent} from './core/components/star-rating/star-rating.com
 import {ToolsComponent} from './core/tools/tools.component'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {ProductService} from './core/models/product/product.service';
+import {HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import {ProductService} from './core/models/product/product.service';
     MatListModule,
     MatCardModule,
     MatPaginatorModule,
-    MatSidenavModule
+    MatSidenavModule,
+    HttpClientModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

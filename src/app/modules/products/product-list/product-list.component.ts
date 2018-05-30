@@ -1,7 +1,9 @@
 import {Component} from '@angular/core'
 import {PageEvent} from '@angular/material'
 import {StarRatingComponentType} from "../../../core/components/star-rating/star-rating.component";
-import {IProduct, ProductService} from "../../../core/models/product/product.service";
+import {ProductService} from "../../../core/models/product/product.service";
+import {BehaviorSubject, combineLatest, Observable} from "rxjs";
+import {Product} from "../../../core/models/product/product";
 
 @Component({
   selector: 'app-product-list',
@@ -11,24 +13,37 @@ import {IProduct, ProductService} from "../../../core/models/product/product.ser
 export class ProductListComponent {
 
   public StarRatingComponentType: typeof StarRatingComponentType = StarRatingComponentType
-  public pageSize: number = 7
-  public currentPage: number = 0
+  public products$: Observable<Product[]>
+  public productsPaginated$: Observable<Product[]>
+  public paginatorConfig$: BehaviorSubject<PageEvent> = new BehaviorSubject<PageEvent>({
+    pageSize: 7,
+    pageIndex: 0,
+    previousPageIndex: 0,
+    length: 0
+  })
 
-  public displayedProduct: IProduct[] = []
+  public constructor(productService: ProductService) {
 
-  public constructor(public productService: ProductService) {
-    this.buildDisplayedProduct()
+    this.products$ = productService.getProducts()
+
+    this.productsPaginated$ = combineLatest(
+        this.products$,
+        this.paginatorConfig$,
+        (products: Product[], paginatorConfig: PageEvent) => {
+          const { pageIndex, pageSize } = paginatorConfig
+          const start = pageIndex * pageSize
+          const end = (pageIndex + 1) * pageSize - 1
+          return products.slice(start, end)
+        }
+      )
+
   }
 
-
-  public buildDisplayedProduct(pageEvent?: PageEvent): void {
-    const pageIndex = pageEvent ? pageEvent.pageIndex : 0
-    const start = pageIndex * this.pageSize
-    const end = (pageIndex + 1) * this.pageSize - 1
-    this.displayedProduct = this.productService.getProducts().slice(start, end)
+  public onPageEvent(pageEvent?: PageEvent): void {
+    this.paginatorConfig$.next(pageEvent)
   }
 
-  public onRate(product: IProduct, rate: number): void {
+  public onRate(product: Product, rate: number): void {
     product.starRating = rate
   }
 

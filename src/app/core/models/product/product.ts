@@ -1,8 +1,11 @@
+import { Moment } from 'moment'
+import * as moment from 'moment'
+
 export interface IProduct {
   id: number;
   productName: string;
   productCode: string;
-  releaseDate: Date;
+  releaseDate: Moment;
   price: number;
   description: string;
   starRating: number;
@@ -14,7 +17,7 @@ export class Product implements IProduct {
   public id: number;
   public productName: string;
   public productCode: string;
-  public releaseDate: Date;
+  public releaseDate: Moment;
   public price: number;
   public description: string;
   public starRating: number;
@@ -25,7 +28,7 @@ export class Product implements IProduct {
     this.id = product.id || null
     this.productName = product.productName || ''
     this.productCode = product.productCode || ''
-    this.releaseDate = product.releaseDate || new Date()
+    this.releaseDate = moment(product.releaseDate)
     this.price = product.price || 0
     this.description = product.description || ''
     this.starRating = product.starRating || 0

@@ -1,35 +1,36 @@
-<mat-toolbar color="primary">
-  Product list!
-</mat-toolbar>
-<div class="flex-grow-1 d-flex flex-column align-items-center justify-content-around pl-3 pr-3">
-  <div *ngFor="let product of displayedProduct"
-       class="d-flex w-100">
-    <div>
+<div *ngIf="products$ | async as products"
+     class="flex-grow-1 d-flex flex-column">
+  <div class="flex-grow-1 d-flex flex-column align-items-center justify-content-around pl-3 pr-3">
+    <div *ngFor="let product of productsPaginated$ | async"
+         class="d-flex w-100">
       <div>
-        #{{ product.id }} - {{ product.productName | titlecase }} {{ product.emoji }}
+        <div>
+          #{{ product.id }} - {{ product.productName | titlecase }} {{ product.emoji }}
+        </div>
+        <div>
+          {{ product.price | currency }} - <i>{{ product.productCode }}</i>
+        </div>
+        <app-star-rating [rating]="product.starRating"
+                         [type]="StarRatingComponentType.FAVORITE"
+                         [color]="'#3f51b5'"
+                         [detail]="true"
+                         (rate)="onRate(product, $event)"></app-star-rating>
       </div>
-      <div>
-        {{ product.price | currency }} - <i>{{ product.productCode }}</i>
+      <div class="flex-grow-1 d-flex justify-content-end">
+        <button mat-icon-button
+                [routerLink]="['/products', 'detail']">
+          <mat-icon>info</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon>add_shopping_cart</mat-icon>
+        </button>
       </div>
-      <app-star-rating [rating]="product.starRating"
-                       [type]="StarRatingComponentType.FAVORITE"
-                       [color]="'#3f51b5'"
-                       [detail]="true"
-                       (rate)="onRate(product, $event)"></app-star-rating>
     </div>
-    <div class="flex-grow-1 d-flex justify-content-end">
-      <button mat-icon-button
-              [routerLink]="['/products', 'detail']">
-        <mat-icon>info</mat-icon>
-      </button>
-      <button mat-icon-button>
-        <mat-icon>add_shopping_cart</mat-icon>
-      </button>
-    </div>
-  </div>
 
+  </div>
+  <mat-paginator *ngIf="paginatorConfig$ | async as paginatorConfig"
+                 [pageSize]="paginatorConfig.pageSize"
+                 [length]="products.length"
+                 [pageIndex]="paginatorConfig.pageIndex"
+                 (page)="onPageEvent($event)"></mat-paginator>
 </div>
-<mat-paginator [pageSize]="pageSize"
-               [length]="productService.getProducts().length"
-               [pageIndex]="currentPage"
-               (page)="buildDisplayedProduct($event)"></mat-paginator>
