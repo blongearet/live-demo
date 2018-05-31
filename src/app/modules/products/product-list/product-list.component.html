@@ -1,7 +1,6 @@
 <div *ngIf="products$ | async as products; else errorMessage"
      class="flex-grow-1 d-flex flex-column">
-  <div class="flex-grow-1 d-flex flex-column align-items-center justify-content-start pl-3 pr-3"
-       style="height: 20%">
+  <div class="flex-grow-1 d-flex flex-column align-items-center justify-content-around pl-3 pr-3">
     <div *ngFor="let product of productsPaginated$ | async"
          class="d-flex w-100">
       <div>

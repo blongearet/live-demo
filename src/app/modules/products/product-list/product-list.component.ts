@@ -32,7 +32,7 @@ export class ProductListComponent {
         (products: Product[], paginatorConfig: PageEvent) => {
           const { pageIndex, pageSize } = paginatorConfig
           const start = pageIndex * pageSize
-          const end = (pageIndex + 1) * pageSize - 1
+          const end = (pageIndex + 1) * pageSize
           return products.slice(start, end)
         }
       )

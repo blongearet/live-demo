@@ -24,7 +24,8 @@ import {StarRatingComponent} from './core/components/star-rating/star-rating.com
 import {ToolsComponent} from './core/tools/tools.component'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {ProductService} from './core/models/product/product.service';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+import { ProductListSimpleComponent } from './modules/products/product-list-simple/product-list-simple.component'
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {HttpClientModule} from '@angular/common/http'
     ReversePipe,
     MomentPipe,
     StarRatingComponent,
-    ToolsComponent
+    ToolsComponent,
+    ProductListSimpleComponent
   ],
   imports: [
     BrowserModule,

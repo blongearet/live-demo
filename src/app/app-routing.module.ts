@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductListComponent } from './modules/products/product-list/product-list.component';
 import {ToolsComponent} from "./core/tools/tools.component";
+import {ProductListSimpleComponent} from "./modules/products/product-list-simple/product-list-simple.component";
 
 const routes: Routes = [
   {
@@ -21,6 +22,11 @@ const routes: Routes = [
         path: '',
         pathMatch: 'full',
         component: ProductListComponent
+      },
+      {
+        path: 'simple',
+        pathMatch: 'full',
+        component: ProductListSimpleComponent
       },
       {
         path: ':id',
