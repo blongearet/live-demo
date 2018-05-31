@@ -16,7 +16,7 @@ export class ProductListComponent {
   public products$: Observable<Product[]>
   public productsPaginated$: Observable<Product[]>
   public paginatorConfig$: BehaviorSubject<PageEvent> = new BehaviorSubject<PageEvent>({
-    pageSize: 7,
+    pageSize: 5,
     pageIndex: 0,
     previousPageIndex: 0,
     length: 0

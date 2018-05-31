@@ -56,7 +56,7 @@ export class ProductService {
       })
   }
 
-  private updateState(products: IProduct[]) {
+  private updateState(products: Product[]) {
     this.products.next(products)
   }
 
