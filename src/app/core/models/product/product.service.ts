@@ -35,8 +35,11 @@ export class ProductService {
     return this.products$
       .pipe(
         map((products: Product[]): Product => {
-          return products
-            .find((product: Product) => product[key] === value)
+          const currentProduct = products.find((product: Product) => product[key] === value)
+          if (currentProduct === undefined) {
+            throw new Error('Doesnt exist')
+          }
+          return currentProduct
         })
       )
   }

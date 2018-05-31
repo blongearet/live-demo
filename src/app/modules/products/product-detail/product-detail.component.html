@@ -1,9 +1,15 @@
-<p>
-  product-detail works!
-</p>
+<div *ngIf="product$ | async as product; else elseContainer">
+  <p>
+    product-detail works!
+  </p>
 
-<pre>
-  {{ productService.getProducts() | json }}
-</pre>
+  <pre>
+    {{ product | json }}
+  </pre>
 
-<button mat-button routerLink="/products">Back!</button>
+  <button mat-button [routerLink]="['/products', product.id+1]">Next product!</button>
+  <button mat-button routerLink="/products">Back!</button>
+</div>
+<ng-template #elseContainer>
+  <h2>FUCK OFF!</h2>
+</ng-template>
